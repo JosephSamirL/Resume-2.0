@@ -1,13 +1,17 @@
 import React from 'react'
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+// @ts-ignore
+import Fade from 'react-reveal/Fade';
 import styles from '@/styles/particles.module.css'
+
 interface Props {
     data: {
         project: string;
         github: string;
         name: string;
         description: string;
+        links: [{name: string, url: string}]
     }
 }
 const particlesOptions = {
@@ -92,6 +96,7 @@ const particlesOptions = {
   detectRetina: true,
 }
 function Header(props: Props) {
+    // @ts-ignore
     const particlesInit = async (main: Engine) => {
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
@@ -102,6 +107,7 @@ function Header(props: Props) {
     const github = props.data.github;
     const name = props.data.name;
     const description = props.data.description;
+    const links = props.data.links;
     
   return (
 <>
@@ -149,7 +155,7 @@ function Header(props: Props) {
             </li>
           </ul>
         </nav>
-
+<Fade bottom>
         <div className="row banner">
           <div className="banner-text">
        
@@ -159,19 +165,22 @@ function Header(props: Props) {
               <h3>{description}.</h3>
             
             <hr />
-           
+             
               <ul className="social">
-                <a href={project} className="button btn project-btn">
-                  <i className="fa fa-book"></i>Project
+                {links?.map((link , index) => {
+                    return(
+                <a key={link.name} href={link.url} className={`button btn project-btn ${index%2 === 0 ? "github-btn":""}`}>
+                        {link.name}
                 </a>
-                <a href={github} className="button btn github-btn">
-                  <i className="fa fa-github"></i>Github
-                </a>
+                    )
+                })}
+        
               </ul>
+            
            
           </div>
         </div>
-
+</Fade>
         <p className="scrolldown">
           <a className="smoothscroll" href="#about">
             <i className="icon-down-circle"></i>
