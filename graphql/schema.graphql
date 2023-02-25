@@ -2,6 +2,7 @@ query allProfiles {
   allProfile {
     name
     email
+    summary
     link {
       name
       url

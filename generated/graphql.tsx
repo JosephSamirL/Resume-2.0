@@ -832,7 +832,7 @@ export type StringFilter = {
 export type AllProfilesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllProfilesQuery = { __typename?: 'RootQuery', allProfile: Array<{ __typename?: 'Profile', name?: string | null, email?: string | null, link?: Array<{ __typename?: 'Link', name?: string | null, url?: string | null } | null> | null }> };
+export type AllProfilesQuery = { __typename?: 'RootQuery', allProfile: Array<{ __typename?: 'Profile', name?: string | null, email?: string | null, summary?: string | null, link?: Array<{ __typename?: 'Link', name?: string | null, url?: string | null } | null> | null }> };
 
 export type AllExperiencesQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -847,6 +847,7 @@ export const AllProfilesDocument = gql`
   allProfile {
     name
     email
+    summary
     link {
       name
       url
