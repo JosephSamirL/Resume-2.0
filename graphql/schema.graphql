@@ -1,0 +1,19 @@
+query allProfiles {
+  allProfile {
+    name
+    email
+    link {
+      name
+      url
+    }
+  }
+}
+query allExperiences($limit: Int) {
+  allExperience(limit: $limit) {
+    nameOfCompany
+    startDate
+    endDate
+    role
+    responsibilities
+  }
+}

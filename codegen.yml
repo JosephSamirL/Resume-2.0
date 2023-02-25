@@ -1,0 +1,8 @@
+schema: "https://otbtil4t.api.sanity.io/v1/graphql/production/default"
+documents: "graphql/**/*.graphql"
+generates:
+  ./generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
