@@ -98,13 +98,9 @@ const particlesOptions = {
 function Header(props: Props) {
     // @ts-ignore
     const particlesInit = async (main: Engine) => {
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
+
     await loadFull(main);
 };
-    const project = props.data.project;
-    const github = props.data.github;
     const name = props.data.name;
     const description = props.data.description;
     const links = props.data.links;
@@ -182,7 +178,7 @@ function Header(props: Props) {
         </div>
 </Fade>
         <p className="scrolldown">
-          <a className="smoothscroll" href="#about">
+          <a className="smoothscroll" href="#resume">
             <i className="icon-down-circle"></i>
           </a>
         </p>

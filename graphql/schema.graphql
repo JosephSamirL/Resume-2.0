@@ -3,6 +3,7 @@ query allProfiles {
     name
     email
     summary
+    title
     link {
       name
       url
