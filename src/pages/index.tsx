@@ -3,17 +3,19 @@ import { AllExperiencesDocument, AllExperiencesQuery, AllProfilesDocument, AllPr
 import Header from '@/components/Header'
 import client from '../../lib/client';
 import Resume from '@/components/Resume';
+import About from '@/components/About';
 const inter = Inter({ subsets: ['latin'] })
 interface Props {
   data: AllProfilesQuery
   expreienceData: AllExperiencesQuery
 }
 export default function Home(props:Props) {
-  console.log(props.expreienceData)
+  
   return (
     <>
       <Header data={{links:props.data?.allProfile[0].link as [{name:string , url:string}],  project:"",name: props.data?.allProfile[0].name as string ,description: props.data?.allProfile[0].summary as string ,github:""}} />
-      <Resume data={{skillmessage: props.data?.allProfile[0].title as string , education:[{school: "MSA" , degree:"", graduated:"", description:"" }], work:props.expreienceData.allExperience.map(item=>({company:item.nameOfCompany , title:item.role , description: item.responsibilities?.map(item=>item).join(" ") , years:(item.startDate + " -- "+(item.endDate? item.endDate: "Present"))})), skills:[{name:"", level:""}]}}/>
+      <About data={{name: props.data.allProfile[0].name as string , profilepic: props.data.allProfile[0].profilePicture?.asset?.url as string , bio: "dhhdhd", address:{state:"egypt" , street:"ramsees", city: "cairo", zip:"1232"} , phone: props.data.allProfile[0].number as string , email: props.data.allProfile[0].email as string, resumedownload:"" }}/>
+      <Resume data={{skillmessage: props.data?.allProfile[0].title as string , education:[{school: "MSA" , degree:"Computer Engineering", graduated:"2021", description:"" }], work: (props.expreienceData.allExperience.map(item=>({company:item.nameOfCompany as string , title:item.role as string , description: item.responsibilities?.map(item=>item).join(" ") as string , years:(item.startDate + " -- "+(item.endDate? item.endDate: "Present")) as string})) as unknown as [{company: string, title: string, years: string, description: string}]), skills:[{name:"", level:""}]}}/>
     </>
   )
 }

@@ -1545,6 +1545,8 @@ ul#nav li.current a {
     padding-top: 96px;
     padding-bottom: 66px;
     overflow: hidden;
+        z-index: 99999;
+            position: relative;
 }
 
 #about a,

@@ -4,6 +4,12 @@ query allProfiles {
     email
     summary
     title
+    number
+    profilePicture {
+      asset {
+        url
+      }
+    }
     link {
       name
       url
