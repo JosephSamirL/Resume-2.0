@@ -32,9 +32,10 @@ export default function Home(props:Props) {
       resizeObserver.disconnect();
     };
   }, []);
+  console.log(screenWidth)
   return (
     <div ref={elementRef}>
-    <Parallax  overlayOpacity={0.5} backgroundImage={`https://source.unsplash.com/random/${screenWidth}×${screenHeight}/?coding`} content={<Header data={{links:props.data?.allProfile[0].link as [{name:string , url:string}],  project:"",name: props.data?.allProfile[0].name as string ,description: props.data?.allProfile[0].summary as string ,github:""}} />}/>
+    <Parallax  overlayOpacity={0.5} backgroundImage={`https://source.unsplash.com/random/${parseInt(screenWidth as unknown as string)}×${parseInt(screenHeight as unknown as string)}/?coding`} content={<Header data={{links:props.data?.allProfile[0].link as [{name:string , url:string}],  project:"",name: props.data?.allProfile[0].name as string ,description: props.data?.allProfile[0].summary as string ,github:""}} />}/>
       
       <About data={{name: props.data.allProfile[0].name as string , profilepic: props.data.allProfile[0].profilePicture?.asset?.url as string , bio: "dhhdhd", address:{state:"egypt" , street:"ramsees", city: "cairo", zip:"1232"} , phone: props.data.allProfile[0].number as string , email: props.data.allProfile[0].email as string, resumedownload:"" }}/>
       <Resume data={{skillmessage: props.data?.allProfile[0].title as string , education:[{school: "MSA" , degree:"Computer Engineering", graduated:"2021", description:"" }], work: (props.expreienceData.allExperience.map(item=>({company:item.nameOfCompany as string , title:item.role as string , description: item.responsibilities?.map(item=>item).join(" ") as string , years:(item.startDate + " -- "+(item.endDate? item.endDate: "Present")) as string})) as unknown as [{company: string, title: string, years: string, description: string}]), skills:[{name:"", level:""}]}}/>

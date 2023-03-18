@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react'
 
 // @ts-ignore
 import Fade from 'react-reveal/Fade';
-import styles from '@/styles/particles.module.css'
+
 
 interface Props {
     data: {
