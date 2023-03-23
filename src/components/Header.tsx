@@ -1,8 +1,8 @@
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, useEffect } from 'react'
 
 // @ts-ignore
 import Fade from 'react-reveal/Fade';
-
+import { animateScroll, scrollSpy } from 'react-scroll';
 
 interface Props {
     data: {
@@ -20,6 +20,9 @@ function Header(props: Props) {
     const name = props.data.name;
     const description = props.data.description;
     const links = props.data.links;
+    useEffect(() => {
+      scrollSpy.update();
+    }, [])
     
   return (
 <>
@@ -27,46 +30,7 @@ function Header(props: Props) {
  <header id="home">
        
 
-        <nav id="nav-wrap">
-          <a className="mobile-btn" href="#nav-wrap" title="Show navigation">
-            Show navigation
-          </a>
-          <a className="mobile-btn" href="#home" title="Hide navigation">
-            Hide navigation
-          </a>
 
-          <ul id="nav" className="nav">
-            <li className="current">
-              <a className="smoothscroll" href="#home">
-                Home
-              </a>
-            </li>
-
-            <li>
-              <a className="smoothscroll" href="#about">
-                About
-              </a>
-            </li>
-
-            <li>
-              <a className="smoothscroll" href="#resume">
-                Resume
-              </a>
-            </li>
-
-            <li>
-              <a className="smoothscroll" href="#portfolio">
-                Works
-              </a>
-            </li>
-
-            <li>
-              <a className="smoothscroll" href="#contact">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
 <Fade bottom>
         <div className="row banner">
           <div className="banner-text">
@@ -94,7 +58,7 @@ function Header(props: Props) {
         </div>
 </Fade>
         <p className="scrolldown">
-          <a className="smoothscroll" href="#resume">
+          <a className="smoothscroll" onClick={() => animateScroll.scrollTo(document.querySelector("#home")?.clientHeight as number)}>
             <i className="icon-down-circle"></i>
           </a>
         </p>

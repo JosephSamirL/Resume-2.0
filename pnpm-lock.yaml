@@ -9,6 +9,7 @@ specifiers:
   '@types/node': 18.14.1
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
+  '@types/react-scroll': ^1.8.6
   apollo-boost: ^0.4.9
   apollo-client: ^2.6.10
   apollo-link-http: ^1.5.17
@@ -24,6 +25,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-reveal: ^1.2.2
+  react-scroll: ^1.8.9
   react-tsparticles: ^2.9.3
   tsparticles: ^2.9.3
   typescript: 4.9.5
@@ -43,6 +45,7 @@ dependencies:
   npm: 9.5.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-scroll: 1.8.9_biqbaboplfbrettd7655fr4n2y
   react-tsparticles: 2.9.3_react@18.2.0
   tsparticles: 2.9.3
   typescript: 4.9.5
@@ -52,6 +55,7 @@ devDependencies:
   '@graphql-codegen/typescript': 3.0.1_graphql@16.6.0
   '@graphql-codegen/typescript-operations': 3.0.1_graphql@16.6.0
   '@graphql-codegen/typescript-react-apollo': 3.3.7_graphql@16.6.0
+  '@types/react-scroll': 1.8.6
   apollo-boost: 0.4.9_graphql@16.6.0
   apollo-client: 2.6.10_graphql@16.6.0
   apollo-link-http: 1.5.17_graphql@16.6.0
@@ -1650,7 +1654,6 @@ packages:
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: false
 
   /@types/react-dom/18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
@@ -1658,17 +1661,21 @@ packages:
       '@types/react': 18.0.28
     dev: false
 
+  /@types/react-scroll/1.8.6:
+    resolution: {integrity: sha512-aMTiNgcmA7dwn1yjoHsiL78RfRnKCXzFyMbv63VrZTXloSfNePBdKtVObC3/My6irwDf0Oz0U4VjEC/vrv6/9w==}
+    dependencies:
+      '@types/react': 18.0.28
+    dev: true
+
   /@types/react/18.0.28:
     resolution: {integrity: sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.1.1
-    dev: false
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
-    dev: false
 
   /@types/ws/8.5.4:
     resolution: {integrity: sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==}
@@ -2601,7 +2608,6 @@ packages:
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
-    dev: false
 
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -4138,6 +4144,10 @@ packages:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: false
 
+  /lodash.throttle/4.1.1:
+    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
+    dev: false
+
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: true
@@ -4794,6 +4804,18 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
     dev: true
+
+  /react-scroll/1.8.9_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-9m7ztraiX/l6L7erzYAD3fhnveNckei6/NkWfqwN2e0FRdoE2W6Pk4oi2Nah7mWpPCPAeIgegfaqZACTimPOwg==}
+    peerDependencies:
+      react: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      lodash.throttle: 4.1.1
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /react-tsparticles/2.9.3_react@18.2.0:
     resolution: {integrity: sha512-QSo5Y0iXcXzOKbOira+kn5Z9Yv0ugk4swcn44HkdublSS8XAmV2QiQSd9T2mdM1tGZ8xVSuqsfdgGWfRC1KKng==}

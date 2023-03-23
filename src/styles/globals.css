@@ -2601,3 +2601,8 @@ footer .social-links li:first-child {
         transform: rotateY(360deg)
     }
 }
+
+#nav-wrap{
+    z-index: 9999999999;
+    background: #1f2024;
+}
