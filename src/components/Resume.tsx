@@ -6,7 +6,7 @@ interface Props {
         skillmessage: string;
         education: [{school: string, degree: string, graduated: string, description: string}];
         work: [{company: string, title: string, years: string, description: string}];
-        skills: [{name: string, level: string}]
+        skills: [{name: string, level: string , color: string}]
     }
 }
 function Resume(props:Props) {
@@ -41,7 +41,7 @@ const skillmessage = props.data.skillmessage;
     });
 
     const skills = props.data.skills.map((skills) => {
-      const backgroundColor = "red";
+      const backgroundColor = skills.color || "#e0e0e0"
       const className = "bar-expand " + skills.name.toLowerCase();
       const width = skills.level;
 

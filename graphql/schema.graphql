@@ -3,6 +3,12 @@ query allProfiles {
     name
     email
     summary
+    about
+    skill{
+      name
+      level
+      color
+    }
     title
     number
     profilePicture {

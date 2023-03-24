@@ -289,11 +289,13 @@ export type Profile = Document & {
   _type?: Maybe<Scalars['String']>;
   /** Date the document was last modified */
   _updatedAt?: Maybe<Scalars['DateTime']>;
+  about?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
   link?: Maybe<Array<Maybe<Link>>>;
   name?: Maybe<Scalars['String']>;
   number?: Maybe<Scalars['String']>;
   profilePicture?: Maybe<Image>;
+  skill?: Maybe<Array<Maybe<Skill>>>;
   summary?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
@@ -307,6 +309,7 @@ export type ProfileFilter = {
   _rev?: InputMaybe<StringFilter>;
   _type?: InputMaybe<StringFilter>;
   _updatedAt?: InputMaybe<DatetimeFilter>;
+  about?: InputMaybe<StringFilter>;
   email?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
   number?: InputMaybe<StringFilter>;
@@ -322,6 +325,7 @@ export type ProfileSorting = {
   _rev?: InputMaybe<SortOrder>;
   _type?: InputMaybe<SortOrder>;
   _updatedAt?: InputMaybe<SortOrder>;
+  about?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   number?: InputMaybe<SortOrder>;
@@ -781,6 +785,31 @@ export type Sanity_DocumentFilter = {
   references?: InputMaybe<Scalars['ID']>;
 };
 
+export type Skill = {
+  __typename?: 'Skill';
+  _key?: Maybe<Scalars['String']>;
+  _type?: Maybe<Scalars['String']>;
+  color?: Maybe<Scalars['String']>;
+  level?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type SkillFilter = {
+  _key?: InputMaybe<StringFilter>;
+  _type?: InputMaybe<StringFilter>;
+  color?: InputMaybe<StringFilter>;
+  level?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+};
+
+export type SkillSorting = {
+  _key?: InputMaybe<SortOrder>;
+  _type?: InputMaybe<SortOrder>;
+  color?: InputMaybe<SortOrder>;
+  level?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+};
+
 export type Slug = {
   __typename?: 'Slug';
   _key?: Maybe<Scalars['String']>;
@@ -832,7 +861,7 @@ export type StringFilter = {
 export type AllProfilesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllProfilesQuery = { __typename?: 'RootQuery', allProfile: Array<{ __typename?: 'Profile', name?: string | null, email?: string | null, summary?: string | null, title?: string | null, number?: string | null, profilePicture?: { __typename?: 'Image', asset?: { __typename?: 'SanityImageAsset', url?: string | null } | null } | null, link?: Array<{ __typename?: 'Link', name?: string | null, url?: string | null } | null> | null }> };
+export type AllProfilesQuery = { __typename?: 'RootQuery', allProfile: Array<{ __typename?: 'Profile', name?: string | null, email?: string | null, summary?: string | null, about?: string | null, title?: string | null, number?: string | null, skill?: Array<{ __typename?: 'Skill', name?: string | null, level?: string | null, color?: string | null } | null> | null, profilePicture?: { __typename?: 'Image', asset?: { __typename?: 'SanityImageAsset', url?: string | null } | null } | null, link?: Array<{ __typename?: 'Link', name?: string | null, url?: string | null } | null> | null }> };
 
 export type AllExperiencesQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -848,6 +877,12 @@ export const AllProfilesDocument = gql`
     name
     email
     summary
+    about
+    skill {
+      name
+      level
+      color
+    }
     title
     number
     profilePicture {
