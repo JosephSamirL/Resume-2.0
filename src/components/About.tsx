@@ -1,4 +1,5 @@
 import React from 'react'
+// @ts-ignore
 import Slide from "react-reveal";
 interface Props {
     data: {
