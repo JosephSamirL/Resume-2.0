@@ -18,6 +18,7 @@ interface Props {
         resumedownload: string;
     }
 }
+
 const About = (props:Props) => {
 
         if (!props.data) return null;
