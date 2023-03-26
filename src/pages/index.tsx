@@ -25,22 +25,27 @@ export default function Home(props:Props) {
     </>
   )
 }
-export async function getStaticProps() {
-    const { data } = await client.query({
+export async function getServerSideProps() {
+  const { data } = await client.query({
     query: AllProfilesDocument,
   });
-  const {data:expreienceData} = await client.query({
+  const { data: experienceData } = await client.query({
     query: AllExperiencesDocument,
     variables: {
       limit: 10,
     }
-    
-  })
-    return {
+  });
+
+  return {
     props: {
       data,
-      expreienceData
-    },
-    revalidate: 60,
+      experienceData
+    }
   }
 }
+
+
+
+
+
+
