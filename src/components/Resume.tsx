@@ -26,7 +26,7 @@ const skillmessage = props.data.skillmessage;
         </div>
       );
     });
-   console.log(props.data.work)
+
     const work = props.data?.work?.map(function (work) {
       return (
         <div key={work.company}>
