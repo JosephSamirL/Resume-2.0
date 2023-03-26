@@ -9,6 +9,11 @@ query allProfiles {
       level
       color
     }
+    resume{
+      asset{
+        url
+      }
+    }
     title
     number
     profilePicture {

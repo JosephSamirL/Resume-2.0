@@ -295,6 +295,7 @@ export type Profile = Document & {
   name?: Maybe<Scalars['String']>;
   number?: Maybe<Scalars['String']>;
   profilePicture?: Maybe<Image>;
+  resume?: Maybe<File>;
   skill?: Maybe<Array<Maybe<Skill>>>;
   summary?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -314,6 +315,7 @@ export type ProfileFilter = {
   name?: InputMaybe<StringFilter>;
   number?: InputMaybe<StringFilter>;
   profilePicture?: InputMaybe<ImageFilter>;
+  resume?: InputMaybe<FileFilter>;
   summary?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
 };
@@ -330,8 +332,30 @@ export type ProfileSorting = {
   name?: InputMaybe<SortOrder>;
   number?: InputMaybe<SortOrder>;
   profilePicture?: InputMaybe<ImageSorting>;
+  resume?: InputMaybe<FileSorting>;
   summary?: InputMaybe<SortOrder>;
   title?: InputMaybe<SortOrder>;
+};
+
+export type Resume = {
+  __typename?: 'Resume';
+  _key?: Maybe<Scalars['String']>;
+  _type?: Maybe<Scalars['String']>;
+  asset?: Maybe<SanityFileAsset>;
+  description?: Maybe<Scalars['String']>;
+};
+
+export type ResumeFilter = {
+  _key?: InputMaybe<StringFilter>;
+  _type?: InputMaybe<StringFilter>;
+  asset?: InputMaybe<SanityFileAssetFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type ResumeSorting = {
+  _key?: InputMaybe<SortOrder>;
+  _type?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
 };
 
 export type RootQuery = {
@@ -861,7 +885,7 @@ export type StringFilter = {
 export type AllProfilesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllProfilesQuery = { __typename?: 'RootQuery', allProfile: Array<{ __typename?: 'Profile', name?: string | null, email?: string | null, summary?: string | null, about?: string | null, title?: string | null, number?: string | null, skill?: Array<{ __typename?: 'Skill', name?: string | null, level?: string | null, color?: string | null } | null> | null, profilePicture?: { __typename?: 'Image', asset?: { __typename?: 'SanityImageAsset', url?: string | null } | null } | null, link?: Array<{ __typename?: 'Link', name?: string | null, url?: string | null } | null> | null }> };
+export type AllProfilesQuery = { __typename?: 'RootQuery', allProfile: Array<{ __typename?: 'Profile', name?: string | null, email?: string | null, summary?: string | null, about?: string | null, title?: string | null, number?: string | null, skill?: Array<{ __typename?: 'Skill', name?: string | null, level?: string | null, color?: string | null } | null> | null, resume?: { __typename?: 'File', asset?: { __typename?: 'SanityFileAsset', url?: string | null } | null } | null, profilePicture?: { __typename?: 'Image', asset?: { __typename?: 'SanityImageAsset', url?: string | null } | null } | null, link?: Array<{ __typename?: 'Link', name?: string | null, url?: string | null } | null> | null }> };
 
 export type AllExperiencesQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -882,6 +906,11 @@ export const AllProfilesDocument = gql`
       name
       level
       color
+    }
+    resume {
+      asset {
+        url
+      }
     }
     title
     number
